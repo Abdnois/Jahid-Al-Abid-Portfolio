@@ -1,0 +1,20 @@
+/* Two scoped image treatments. Nothing else on the page is affected. */
+
+/* FAQ: black-and-white treatment on the exact uploaded image only.
+   Grayscale preserves luminance, so the wooden blocks, carved letters and
+   their contrast/sharpness remain intact; all turquoise tones are removed.
+   The wrapper's filter is cleared so it is not applied twice. */
+#faq .framer-98n566 {
+    filter: none !important;
+}
+
+#faq img.faq-blocks-image {
+    filter: grayscale(1) !important;
+    object-fit: cover !important;
+    object-position: center center !important;
+}
+
+/* Services: black-and-white treatment on the screenshot image only. */
+#services img.services-screenshot {
+    filter: grayscale(1);
+}

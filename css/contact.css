@@ -1,0 +1,401 @@
+/* ------------------------------------------------------------------ *
+ * Contact section — two-column layout matching the portfolio's design
+ * system (black canvas, #0d0d0d cards, Satoshi headings, Inter body
+ * copy, subtle borders, 809px mobile breakpoint).
+ * ------------------------------------------------------------------ */
+
+#contact {
+    --contact-surface: #0d0d0d;
+    --contact-text: #fff;
+    --contact-muted: rgba(255, 255, 255, 0.65);
+    --contact-line: rgba(255, 255, 255, 0.1);
+
+    position: relative;
+    z-index: 2;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    padding: 100px 80px;
+    background: #000;
+    /* html already sets scroll-padding-top: 72px for the fixed header.
+       Adding scroll-margin-top here would double the offset to 144px and
+       leave the previous section visible above the section. */
+    min-height: calc(100vh - 72px);
+
+    /* Self-contained entrance animation: it always resolves to visible,
+       even when an anchor jump lands here before a scroll observer fires. */
+    animation: contact-reveal 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+
+@keyframes contact-reveal {
+    from {
+        opacity: 0;
+        transform: translateY(18px);
+    }
+    to {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+.contact-inner {
+    width: 100%;
+    max-width: 1400px;
+}
+
+/* ---- two-column grid: 40% info / 60% form ---- */
+
+.contact-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 2fr) minmax(0, 3fr);
+    gap: 40px;
+    align-items: start;
+}
+
+.contact-intro {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.contact-head {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 24px;
+}
+
+.contact-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 10px 16px;
+    background: var(--contact-surface);
+    border-radius: 26px;
+    color: var(--contact-text);
+    font-family: Inter, sans-serif;
+    font-size: 15px;
+    font-weight: 400;
+    letter-spacing: -0.3px;
+    line-height: 1;
+    white-space: nowrap;
+}
+
+.contact-badge-dot {
+    display: block;
+    flex: none;
+    width: 7px;
+    height: 7px;
+    background: #fff;
+    border-radius: 50%;
+    animation: contact-dot-blink 1.6s ease-in-out infinite;
+}
+
+@keyframes contact-dot-blink {
+    0%, 100% {
+        opacity: 1;
+        box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.35);
+    }
+    50% {
+        opacity: 0.3;
+        box-shadow: 0 0 0 4px rgba(255, 255, 255, 0);
+    }
+}
+
+.contact-heading {
+    margin: 0;
+    color: var(--contact-text);
+    font-family: Satoshi, "Satoshi Placeholder", sans-serif;
+    font-size: clamp(40px, 4.4vw, 64px);
+    font-weight: 400;
+    line-height: 1.04;
+    letter-spacing: -0.03em;
+}
+
+.contact-description,
+.contact-card-text {
+    margin: 0;
+    color: var(--contact-muted);
+    font-family: "Inter Display", "Inter Display Placeholder", sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+/* ---- dark WhatsApp card ---- */
+
+.contact-card {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 32px;
+    background: var(--contact-surface);
+    color: var(--contact-text);
+    border: 1px solid var(--contact-line);
+    border-radius: 20px;
+}
+
+.contact-card-label {
+    margin: 0;
+    color: var(--contact-muted);
+    font-family: Inter, sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+.contact-card-title {
+    margin: 0;
+    color: var(--contact-text);
+    font-family: Satoshi, "Satoshi Placeholder", sans-serif;
+    font-size: 26px;
+    font-weight: 400;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+}
+
+.contact-availability {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 8px 0 0;
+    color: var(--contact-muted);
+    font-family: Inter, sans-serif;
+    font-size: 13px;
+    line-height: 1.4;
+}
+
+/* ---- form card ---- */
+
+.contact-form-wrap {
+    min-width: 0;
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 40px;
+    background: var(--contact-surface);
+    color: var(--contact-text);
+    border: 1px solid var(--contact-line);
+    border-radius: 20px;
+}
+
+.contact-field {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.contact-label {
+    color: var(--contact-muted);
+    font-family: Inter, sans-serif;
+    font-size: 13px;
+    letter-spacing: -0.2px;
+}
+
+.contact-input,
+.contact-select,
+.contact-textarea {
+    width: 100%;
+    padding: 14px 16px;
+    background: #000;
+    border: 1px solid var(--contact-line);
+    border-radius: 10px;
+    color: var(--contact-text);
+    font-family: Inter, sans-serif;
+    font-size: 15px;
+    line-height: 1.4;
+    outline: none;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+}
+
+.contact-input::placeholder,
+.contact-textarea::placeholder {
+    color: rgba(255, 255, 255, 0.32);
+}
+
+.contact-input:hover,
+.contact-select:hover,
+.contact-textarea:hover {
+    border-color: rgba(255, 255, 255, 0.18);
+}
+
+.contact-input:focus,
+.contact-select:focus,
+.contact-textarea:focus {
+    background: #050505;
+    border-color: rgba(255, 255, 255, 0.32);
+    box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.04);
+}
+
+.contact-select {
+    appearance: none;
+    -webkit-appearance: none;
+    padding-right: 44px;
+    cursor: pointer;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23ffffffa6' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 16px center;
+}
+
+.contact-select:invalid {
+    color: rgba(255, 255, 255, 0.32);
+}
+
+.contact-select option {
+    background: var(--contact-surface);
+    color: var(--contact-text);
+}
+
+.contact-textarea {
+    min-height: 160px;
+    resize: vertical;
+}
+
+.contact-input[aria-invalid="true"],
+.contact-select[aria-invalid="true"],
+.contact-textarea[aria-invalid="true"] {
+    border-color: rgba(255, 155, 155, 0.55);
+}
+
+.contact-error {
+    margin: 0;
+    color: #ff9b9b;
+    font-family: Inter, sans-serif;
+    font-size: 12px;
+}
+
+.contact-error:empty {
+    display: none;
+}
+
+/* ---- buttons (monochromatic, shared with the WhatsApp CTA) ---- */
+
+.contact-submit {
+    align-self: flex-start;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 14px 30px;
+    background: #000;
+    border: 1px solid #3b3b3b;
+    border-radius: 11px;
+    color: var(--contact-text);
+    font-family: "Inter Display", "Inter Display Placeholder", sans-serif;
+    font-size: 18px;
+    line-height: 1.2;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.2s ease, border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.contact-submit:hover {
+    background: #0d0d0d;
+    border-color: #6b6b6b;
+    transform: translateY(-1px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.65);
+}
+
+.contact-submit:active {
+    transform: translateY(0);
+}
+
+.contact-submit:focus-visible {
+    outline: 2px solid rgba(255, 255, 255, 0.7);
+    outline-offset: 3px;
+}
+
+/* WhatsApp icon kept monochrome so the button matches the portfolio. */
+.contact-whatsapp svg {
+    width: 20px;
+    height: 20px;
+    flex: none;
+    fill: currentColor;
+}
+
+.contact-status {
+    margin: 0;
+    color: var(--contact-text);
+    font-family: Inter, sans-serif;
+    font-size: 14px;
+    line-height: 1.4;
+}
+
+.contact-status:empty {
+    display: none;
+}
+
+/* ---- responsive ---- */
+
+/* Tablet */
+@media (max-width: 1100px) {
+    #contact {
+        padding: 80px 40px;
+    }
+
+    .contact-grid {
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
+        gap: 28px;
+    }
+
+    .contact-form {
+        padding: 32px;
+    }
+}
+
+/* Mobile: stack intro, card and form vertically */
+@media (max-width: 809px) {
+    #contact {
+        padding: 80px 18px;
+    }
+
+    .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 28px;
+    }
+
+    .contact-intro {
+        gap: 28px;
+    }
+
+    .contact-head {
+        gap: 20px;
+    }
+
+    .contact-card,
+    .contact-form {
+        padding: 24px;
+    }
+}
+
+@media (max-width: 420px) {
+    .contact-card,
+    .contact-form {
+        padding: 20px;
+    }
+
+    .contact-submit {
+        width: 100%;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    #contact {
+        animation: none;
+    }
+
+    .contact-badge-dot {
+        animation: none;
+    }
+
+    .contact-submit,
+    .contact-input,
+    .contact-select,
+    .contact-textarea {
+        transition: none;
+    }
+}

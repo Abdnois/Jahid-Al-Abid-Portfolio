@@ -1,0 +1,126 @@
+/* Support styles for exact clones of the Framer "Contact Me" component.
+   All visual styling (layers, glows, gradient, border, radius, hover) comes
+   from the cloned component's own DOM and Framer CSS — nothing is replicated
+   here except resets needed when the clone is a <button> or rich-text link. */
+
+button[data-framer-clone] {
+    appearance: none;
+    -webkit-appearance: none;
+    border: 0;
+    padding: 0;
+    background: transparent;
+    font: inherit;
+    color: inherit;
+    cursor: pointer;
+}
+
+a[data-framer-clone],
+[data-framer-clone] .framer-text {
+    text-decoration: none !important;
+}
+
+/* ---- Animated travelling light on the border -------------------------
+   The Framer component supplies the layered glows; this adds only the
+   slowly travelling highlight around the thin border. A registered custom
+   property keeps the rotation perfectly smooth (no keyframe jumps) and it
+   is never restarted by hover or Framer re-renders. */
+@property --portfolio-border-angle {
+    syntax: '<angle>';
+    inherits: false;
+    initial-value: 0deg;
+}
+
+@keyframes portfolio-border-travel {
+    from { --portfolio-border-angle: 0deg; }
+    to   { --portfolio-border-angle: 360deg; }
+}
+
+[data-framer-clone]::before {
+    content: "";
+    position: absolute;
+    inset: -1px;
+    z-index: 6;
+    padding: 1px;
+    border-radius: 12px;
+    pointer-events: none;
+    background: conic-gradient(
+        from var(--portfolio-border-angle),
+        rgba(255, 255, 255, 0) 0deg,
+        rgba(255, 255, 255, 0) 170deg,
+        rgba(163, 163, 163, 0.25) 220deg,
+        rgba(255, 255, 255, 0.85) 268deg,
+        rgba(255, 255, 255, 0.28) 300deg,
+        rgba(255, 255, 255, 0) 360deg
+    );
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    mask-composite: exclude;
+    animation: portfolio-border-travel 8s linear infinite;
+}
+
+/* Exact Framer Motion spring easing, captured from the original button's
+   hover animation (700ms, slight initial undershoot then settle). */
+:root {
+    --framer-hover-spring: linear(0 0%, -0.1388 1.4492753623188406%, -0.1706 2.898550724637681%, -0.143 4.3478260869565215%, -0.0841 5.797101449275362%, -0.0105 7.246376811594203%, 0.0684 8.695652173913043%, 0.1471 10.144927536231883%, 0.2226 11.594202898550723%, 0.2935 13.043478260869563%, 0.3592 14.492753623188403%, 0.4196 15.942028985507243%, 0.4747 17.391304347826082%, 0.5248 18.840579710144922%, 0.5703 20.289855072463762%, 0.6116 21.739130434782602%, 0.649 23.188405797101442%, 0.6828 24.637681159420282%, 0.7133 26.086956521739122%, 0.7409 27.536231884057962%, 0.7659 28.9855072463768%, 0.7885 30.43478260869564%, 0.8089 31.88405797101448%, 0.8273 33.33333333333332%, 0.844 34.782608695652165%, 0.859 36.23188405797101%, 0.8726 37.68115942028985%, 0.8849 39.130434782608695%, 0.896 40.57971014492754%, 0.9061 42.02898550724638%, 0.9151 43.478260869565226%, 0.9233 44.92753623188407%, 0.9307 46.37681159420291%, 0.9374 47.826086956521756%, 0.9434 49.2753623188406%, 0.9489 50.724637681159436%, 0.9538 52.17391304347828%, 0.9583 53.62318840579712%, 0.9623 55.072463768115966%, 0.9659 56.5217391304348%, 0.9692 57.97101449275364%, 0.9722 59.42028985507248%, 0.9749 60.869565217391326%, 0.9773 62.31884057971016%, 0.9795 63.768115942029%, 0.9815 65.21739130434784%, 0.9833 66.66666666666669%, 0.9849 68.11594202898553%, 0.9863 69.56521739130437%, 0.9876 71.01449275362322%, 0.9888 72.46376811594206%, 0.9899 73.9130434782609%, 0.9909 75.36231884057975%, 0.9918 76.81159420289859%, 0.9926 78.26086956521743%, 0.9933 79.71014492753628%, 0.9939 81.15942028985512%, 0.9945 82.60869565217396%, 0.995 84.05797101449281%, 0.9955 85.50724637681164%, 0.996 86.95652173913047%, 0.9963 88.40579710144931%, 0.9967 89.85507246376815%, 0.997 91.30434782608698%, 0.9973 92.75362318840581%, 0.9976 94.20289855072465%, 0.9978 95.6521739130435%, 1 97.10144927536233%, 1 98.55072463768116%, 1 100%);
+}
+
+/* ---- Smooth hover interpolation ---------------------------------------
+   The original Framer button animates hover with a Motion spring
+   { damping: 60, mass: 1, stiffness: 500, delay: 0 } — overdamped, no
+   overshoot. Its CSS layer has `transition: all 0s`, so simply toggling
+   the .hover class on a clone would snap. These rules reproduce the
+   interpolation for the exact properties/variants Framer animates:
+     - container box-shadow -> 0 1px 7px rgba(255,255,255,.24)
+     - first glow opacity   -> .5
+     - glow bar dimensions  -> the .hover geometry from Framer's CSS
+   The border animation lives on ::before and is not touched here. */
+[data-framer-clone] .framer-1l7inir,
+[data-framer-clone] .framer-1mp9oxt,
+[data-framer-clone] .framer-1cwzqq7,
+[data-framer-clone] .framer-10b0bjg,
+[data-framer-clone] .framer-1nxf6cu {
+    transition:
+        box-shadow 700ms var(--framer-hover-spring),
+        opacity 700ms var(--framer-hover-spring),
+        width 700ms var(--framer-hover-spring),
+        height 700ms var(--framer-hover-spring),
+        top 700ms var(--framer-hover-spring),
+        bottom 700ms var(--framer-hover-spring),
+        left 700ms var(--framer-hover-spring) !important;
+}
+
+[data-framer-clone].hover .framer-1l7inir {
+    box-shadow: 0px 1px 7px 0px rgba(255, 255, 255, 0.24) !important;
+}
+
+[data-framer-clone].hover .framer-1mp9oxt {
+    opacity: 0.5 !important;
+}
+
+/* The second glow's gradient centre changes from rgb(115,115,115) to
+   rgb(194,194,194). Gradients cannot be transitioned, so crossfade a
+   hover-only overlay carrying the original hover gradient. */
+[data-framer-clone] .framer-1cwzqq7::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: radial-gradient(50% 50% at 50% 50%, rgb(194, 194, 194) 0%, rgba(0, 0, 0, 0) 100%);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 700ms var(--framer-hover-spring) !important;
+}
+
+[data-framer-clone].hover .framer-1cwzqq7::after {
+    opacity: 1;
+}
+
+/* Keep the WhatsApp glyph in scale with the reference's 18px label. */
+[data-framer-clone="Chat on WhatsApp"] svg {
+    width: 18px;
+    height: 18px;
+    flex: none;
+    fill: currentColor;
+    margin-right: 8px;
+}

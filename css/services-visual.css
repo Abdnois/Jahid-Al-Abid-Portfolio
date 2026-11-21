@@ -1,0 +1,17 @@
+/* Services section visual: a single static screenshot of the actual
+   Red Bull website. The container's existing rounded corners and size are
+   preserved; only its contents are replaced. */
+
+#services .framer-1aan3w8 {
+    /* Matches the screenshot's own light background so object-fit: contain
+       letterboxing is invisible at every breakpoint. */
+    background: #f2f2f2;
+}
+
+#services .services-screenshot {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center center;
+}
