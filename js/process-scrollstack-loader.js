@@ -3,15 +3,18 @@
  *
  * The site is a static Framer export. This dependency-free script mounts the
  * React Bits Scroll Stack over the three existing Process cards. The React
- * bundle is imported on demand. The original cards stay in the DOM (Framer may
- * still update them on resize) and are only hidden while the stack is live.
+ * bundle is imported on demand. The stack only runs at <=1024px; on desktop
+ * the original Framer cards are restored. The originals stay in the DOM
+ * (Framer may still update them on resize) and are hidden only while live.
  * ------------------------------------------------------------------ */
 (function () {
     'use strict';
 
+    var QUERY = '(max-width: 1024px)';
     var SECTION = '#process';
     var STEPS = '[data-framer-name="Steps"]';
     var CARD = '.framer-nWYvp';
+    var mql = window.matchMedia(QUERY);
 
     var script = document.currentScript;
     if (!script || !script.src) {
@@ -123,11 +126,13 @@
             for (var j = 0; j < marked.length; j++) marked[j].removeAttribute('data-ja-original-card');
         }
         if (el.parentNode) el.parentNode.removeChild(el);
-        document.documentElement.classList.remove('ja-scrollstack-active');
+        if (!document.querySelector('[data-ja-scrollstack]')) {
+            document.documentElement.classList.remove('ja-scrollstack-active');
+        }
     }
 
     function enable() {
-        if (busy) return;
+        if (!mql.matches || busy) return;
         var steps = findSteps();
         var cards = originalCards(steps);
         if (cards.length !== 3) {
@@ -153,6 +158,11 @@
                     schedule();
                     return;
                 }
+                if (!mql.matches) {
+                    busy = false;
+                    disable();
+                    return;
+                }
                 if (!host.__jaScrollRoot) {
                     var live = originalCards(host.parentNode);
                     loaded.mount(host, cloneCards(live));
@@ -165,8 +175,14 @@
             });
     }
 
+    function disable() {
+        destroy();
+        busy = false;
+    }
+
     function sync() {
-        enable();
+        if (mql.matches) enable();
+        else disable();
     }
 
     function schedule() {
@@ -178,11 +194,18 @@
         });
     }
 
+    if (mql.addEventListener) mql.addEventListener('change', schedule);
+    else if (mql.addListener) mql.addListener(schedule);
+
     // Framer swaps card variants on breakpoint changes. Re-clone the live cards
     // so the stack always shows the current variant.
     window.addEventListener('resize', function () {
         window.clearTimeout(resizeTimer);
         resizeTimer = window.setTimeout(function () {
+            if (!mql.matches) {
+                disable();
+                return;
+            }
             if (!host || !host.isConnected) {
                 schedule();
                 return;
