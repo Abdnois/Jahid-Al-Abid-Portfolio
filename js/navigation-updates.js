@@ -11,7 +11,7 @@
     'use strict';
 
     var PROJECT_ID = 'projects';
-    var CASE_STUDY_URL = 'https://abdnois.github.io/redbull-portfolio/';
+    var CASE_STUDY_URL = 'https://abdnois.github.io/Redbull/';
     var PROJECT_VIEW = /^(view\s+(my\s+)?(work|project)|see\s+my\s+work|my\s+projects?)$/i;
     var CASE_STUDY_VIEW = /^view\s+(my\s+)?case\s?study$/i;
 

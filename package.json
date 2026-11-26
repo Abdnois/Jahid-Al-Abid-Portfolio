@@ -1,0 +1,20 @@
+{
+  "name": "jahid-portfolio",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Personal portfolio (static Framer export) with the React Bits FlexCarousel for the Projects section on mobile and tablet.",
+  "scripts": {
+    "build": "vite build && vite build --config vite.scrollstack.config.mjs && node scripts/build-site.mjs",
+    "build:carousel": "vite build"
+  },
+  "dependencies": {
+    "ogl": "^1.0.11",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^5.0.0",
+    "vite": "^7.0.0"
+  }
+}

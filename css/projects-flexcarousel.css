@@ -1,0 +1,134 @@
+/* ------------------------------------------------------------------ *
+ * React Bits FlexCarousel — Projects section, mobile and tablet only.
+ *
+ * The carousel is mounted by js/projects-flexcarousel-loader.js inside the
+ * existing Framer Projects wrapper, and only while the viewport is <=1024px.
+ * Nothing here applies above that breakpoint, so the desktop grid, spacing
+ * and animations stay exactly as Framer exported them.
+ * ------------------------------------------------------------------ */
+
+#projects .ja-flexcarousel {
+    display: none;
+}
+
+@media (max-width: 1024px) {
+    /* Hide only the original card grid while the carousel is mounted.
+       The section's "View My Project" / "Contact Me" buttons stay put. */
+    #projects.ja-flexcarousel-mode [data-framer-name="Mask"] {
+        display: none !important;
+    }
+
+    #projects .ja-flexcarousel {
+        display: block;
+        position: relative;
+        width: 100%;
+        height: clamp(330px, 88vw, 440px);
+        min-height: 330px;
+    }
+
+    #projects .ja-flexcarousel__inner {
+        width: 100%;
+        height: 100%;
+    }
+
+    /* Match the portfolio's card typography and palette. */
+    #projects .ja-flexcarousel .flex-carousel {
+        width: 100%;
+        height: 100%;
+        color: #fff;
+        font-family: Inter, "Inter Placeholder", sans-serif;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        /* The component ships with overscroll-behavior: contain. Combined with
+           overflow: hidden that swallows vertical touch scrolling, so the page
+           could not scroll when a swipe started on the carousel. */
+        overscroll-behavior: auto;
+    }
+
+    #projects .ja-flexcarousel .flex-carousel__title {
+        max-width: min(88%, 640px);
+        font-weight: 400;
+        letter-spacing: -0.3px;
+        text-wrap: balance;
+    }
+
+    #projects .ja-flexcarousel .flex-carousel__subtitle {
+        opacity: 0.55;
+    }
+
+    #projects .ja-flexcarousel .flex-carousel__count {
+        letter-spacing: 0.02em;
+    }
+
+    /* Native fallback shown if WebGL2 is unavailable or the engine throws. */
+    #projects .ja-flexcarousel.ja-flexcarousel--fallback {
+        height: auto;
+        min-height: 0;
+    }
+
+    #projects .ja-flexcarousel__fallback {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        width: 100%;
+        height: 100%;
+        padding: 0 6px;
+        overflow-x: auto;
+        overscroll-behavior-x: contain;
+        scroll-snap-type: x mandatory;
+        scrollbar-width: none;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    #projects .ja-flexcarousel__fallback::-webkit-scrollbar {
+        display: none;
+    }
+
+    #projects .ja-flexcarousel__fallback-card {
+        display: flex;
+        flex: 0 0 min(78vw, 420px);
+        flex-direction: column;
+        gap: 10px;
+        align-items: center;
+        scroll-snap-align: center;
+        color: #fff;
+        text-decoration: none;
+    }
+
+    #projects .ja-flexcarousel__fallback-card img {
+        display: block;
+        width: 100%;
+        aspect-ratio: 16 / 10;
+        object-fit: cover;
+        border-radius: 4px;
+        filter: grayscale(1);
+    }
+
+    #projects .ja-flexcarousel__fallback-card:focus-visible {
+        outline: 2px solid rgba(255, 255, 255, 0.75);
+        outline-offset: 6px;
+    }
+
+    #projects .ja-flexcarousel__fallback-title {
+        font-size: 15px;
+        font-weight: 400;
+        line-height: 1.35;
+        letter-spacing: -0.3px;
+        text-align: center;
+    }
+}
+
+/* Tablets get a wider, shorter box: 88vw would be far too tall here, and the
+   extra width lets two cards plus a peek of their neighbours stay visible. */
+@media (min-width: 600px) and (max-width: 1024px) {
+    #projects .ja-flexcarousel {
+        height: clamp(430px, 44vw, 540px);
+        min-height: 430px;
+    }
+}
+
+@media (max-width: 1024px) and (prefers-reduced-motion: reduce) {
+    #projects .ja-flexcarousel__fallback {
+        scroll-behavior: auto;
+    }
+}

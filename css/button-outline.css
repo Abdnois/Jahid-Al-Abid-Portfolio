@@ -1,0 +1,32 @@
+/* ------------------------------------------------------------------ *
+ * Hairline outline for the Framer "Contact Me" button component.
+ *
+ * The component has no border. What reads as an outline is the grey plate
+ * (.framer-1l7inir, #3b3b3b, radius 11.5px, overflow: hidden) showing
+ * around the black inner plate (.framer-unn2aa, z-index 4). Framer's
+ * v-1siibz4 variant sizes that plate with `padding: .85px`.
+ *
+ * At DPR 1 an .85px band is a sub-pixel: the black inner plate covers 85%
+ * of the row, so the grey blends down to ~rgb(9 9 9) and vanishes against
+ * the black page. It only looked present where one of the blurred white
+ * decorative layers sits behind the band, which is why the hero and
+ * process buttons lost their bottom edge and the projects button lost its
+ * top edge. 1px renders as one full, even pixel on every edge.
+ *
+ * The cloned CTAs built by js/button-standardize.js copy whichever
+ * "Contact Me" instance the script finds, so on phones they carry the same
+ * v-1siibz4 variant and already get the 1px plate above. They are pinned
+ * explicitly too, so the outline thickness and button height stay identical
+ * to the original even if the clone source changes. From 810px up both use
+ * Framer's own 1.4px plate, untouched.
+ * ------------------------------------------------------------------ */
+
+.framer-caRRT.framer-v-1siibz4 .framer-1l7inir {
+    padding: 1px !important;
+}
+
+@media (max-width: 809.98px) {
+    [data-framer-clone] .framer-1l7inir {
+        padding: 1px !important;
+    }
+}

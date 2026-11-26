@@ -27,3 +27,61 @@ header .framer-1db5yew-container {
     margin-top: -6px;
     margin-bottom: 6px;
 }
+
+/* About section (mobile and tablet only): lead with the portrait.
+   The Framer "container" holds exactly two blocks — "more info" (heading,
+   paragraph, skills, experience) and the portrait wrapper. Phones and the
+   810-1024 tablet variant stack them in a column, so ordering the portrait
+   first moves it above the text without touching the DOM, the image or its
+   sizing. From 1025px up the same container lays the two blocks out side by
+   side, so this is scoped to <=1024px and desktop is untouched.
+
+   Only `order` is set: the 44px flex gap keeps the same spacing between the
+   portrait and the text that the section already uses, and the portrait keeps
+   its own width, aspect ratio, radius and object-fit. */
+@media (max-width: 1024px) {
+    #about-me .framer-m19jcg > .framer-vbrsas {
+        order: -1;
+    }
+}
+
+/* Experience list (phones only): below 810px Framer swaps each row to its
+   "mobile" variant, which stacks category, description and status in a
+   column. Keep the desktop-style three-column row instead by overriding just
+   that variant with one grid per entry, so every row shares identical column
+   edges. The status has a fixed right-hand column and is right-aligned; long
+   fields wrap inside their own column. Typography, colours, divider and the
+   section's own gaps stay untouched. At 810px+ the "primary" variant is used,
+   so this rule cannot touch tablet/desktop. */
+@media (max-width: 809.98px) {
+    section[data-framer-name="Experience"] .framer-t9Edp.framer-v-jf8sa4.framer-ofjt5x {
+        display: grid;
+        grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr) 56px;
+        column-gap: 6px;
+        align-items: center;
+    }
+
+    section[data-framer-name="Experience"] .framer-t9Edp.framer-v-jf8sa4.framer-ofjt5x > * {
+        flex: none;
+        width: auto;
+        min-width: 0;
+        margin: 0;
+    }
+
+    section[data-framer-name="Experience"] .framer-t9Edp.framer-v-jf8sa4.framer-ofjt5x > :last-child p {
+        text-align: right;
+    }
+}
+
+/* Services section (mobile and tablet only): lead with the screenshot.
+   The "top container" holds exactly two blocks — the text/tags/buttons column
+   and the image wrapper. Phones and the 810-1024 tablet variant stack them,
+   so ordering the image first puts it above the heading without touching the
+   DOM, the image or its sizing. At >=1025px the two blocks sit side by side
+   and this rule cannot match, so desktop is unchanged. The existing 44px flex
+   gap keeps the same spacing between image and text. */
+@media (max-width: 1024px) {
+    #services .framer-e7mjga > .framer-1aan3w8 {
+        order: -1;
+    }
+}

@@ -59,6 +59,63 @@ a[data-framer-clone],
     animation: portfolio-border-travel 8s linear infinite;
 }
 
+/* ---- Mobile/tablet: travelling highlight outside the plate --------------
+   Every CTA root gets the same ring, originals and clones alike, so there is
+   one animated outline instead of clones animating while originals sit still.
+
+   The ring is drawn 1.5px OUTSIDE the plate (inset -1.5px) rather than on top
+   of the plate's own hairline. The earlier version painted a 1px arc over the
+   grey plate band, which failed for three reasons: white on #3b3b3b is only a
+   modest jump, the button sits on a fractional pixel so a 1px band is smeared
+   across two device rows (measured 36-91% coverage per edge), and 170deg of
+   the gradient was fully transparent with one narrow peak. The result was a
+   sub-pixel shimmer that looked like a plain outlined button. Outside the
+   plate the arc is white on the black page, so a partly covered pixel still
+   reads, and the plate's own outline is never covered.
+
+   A faint 14% base hairline keeps the ring continuous without turning into a
+   second border; the 30deg full-white core plus soft shoulders lights roughly
+   110deg of the perimeter at any instant. Desktop is untouched: this block is
+   scoped to <=1024px only. */
+@supports (mask-composite: exclude) or (-webkit-mask-composite: xor) {
+    @media (max-width: 1024px) {
+        .framer-caRRT::before {
+            content: "";
+            position: absolute;
+            inset: -1.5px;
+            z-index: 6;
+            padding: 1.5px;
+            border-radius: 13px;
+            pointer-events: none;
+            background: conic-gradient(
+                from var(--portfolio-border-angle),
+                rgba(255, 255, 255, 0.14) 0deg,
+                rgba(255, 255, 255, 0.14) 95deg,
+                rgba(255, 255, 255, 0.42) 165deg,
+                rgba(255, 255, 255, 0.92) 225deg,
+                #fff 245deg,
+                #fff 275deg,
+                rgba(255, 255, 255, 0.92) 295deg,
+                rgba(255, 255, 255, 0.42) 345deg,
+                rgba(255, 255, 255, 0.14) 360deg
+            );
+            -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+            -webkit-mask-composite: xor;
+            mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+            mask-composite: exclude;
+            animation: portfolio-border-travel 6s linear infinite;
+        }
+    }
+}
+
+/* Reduced motion: drop the travelling highlight and its base hairline, so the
+   button keeps exactly the static plate outline from css/button-outline.css. */
+@media (max-width: 1024px) and (prefers-reduced-motion: reduce) {
+    .framer-caRRT::before {
+        content: none;
+    }
+}
+
 /* Exact Framer Motion spring easing, captured from the original button's
    hover animation (700ms, slight initial undershoot then settle). */
 :root {

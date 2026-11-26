@@ -1,0 +1,67 @@
+/* React Bits Scroll Stack — local CSS replacing the component's Tailwind
+   utility strings. Scoped to the Process section host so nothing else changes. */
+
+.ja-scrollstack-host {
+    position: relative;
+    width: 100%;
+}
+
+/* Services Bento: the host takes the place of the two original columns. */
+.ja-scrollstack-host[data-ja-target="services"] {
+    flex: 1 0 100%;
+}
+
+/* The three original Framer cards stay in the DOM (Framer may still update
+   them on resize) but are hidden while the stack is mounted. */
+.ja-scrollstack-mode > [data-ja-original-card] {
+    display: none !important;
+}
+
+/* The Framer page root clips overflow, which would make `position: sticky`
+   stick to that box instead of the viewport. `clip` keeps the same clipping
+   without creating a scroll container, so the stack follows window scroll. */
+.ja-scrollstack-active .framer-OLpjL {
+    overflow: clip;
+}
+
+.ja-scrollstack-root {
+    position: relative;
+    width: 100%;
+}
+
+.ja-scrollstack-root--scroller {
+    height: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.ja-scrollstack-inner {
+    position: relative;
+    padding-inline: clamp(1rem, 6%, 5rem);
+}
+
+/* Keep the original card widths inside the Process column. */
+.ja-scrollstack-host .ja-scrollstack-inner {
+    padding-inline: 0;
+}
+
+.ja-scrollstack-slot {
+    position: sticky;
+}
+
+.ja-scrollstack-card {
+    position: relative;
+    transform-origin: top center;
+    will-change: transform;
+}
+
+/* Same dim layer the React Bits ScrollStackItem renders, re-created on the
+   cloned Framer cards so their own styling is preserved. */
+.ja-scrollstack-dim {
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: #000;
+    opacity: var(--scroll-stack-dim, 0);
+    pointer-events: none;
+}
