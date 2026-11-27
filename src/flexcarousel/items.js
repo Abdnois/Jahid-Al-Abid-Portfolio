@@ -1,6 +1,6 @@
 /**
  * The three portfolio projects shown by the FlexCarousel on mobile/tablet:
- * one entry per project, in the same order as the desktop Projects grid.
+ * one entry per project — Cedrina Farm, Red Bull, VERDÉ.
  *
  * Paths are document-relative, matching the rest of the static Framer export,
  * and point at the existing local image assets. No remote/placeholder images.
@@ -8,12 +8,12 @@
  */
 export const projects = [
   {
-    id: 'verde-home',
-    src: 'assets/images/verde-home.png',
-    alt: 'VERDÉ skincare store home page with the brand hero and featured products',
-    title: 'VERDÉ — Home',
-    subtitle: 'Skincare storefront',
-    href: 'https://abdnois.github.io/verde-skincare-store/'
+    id: 'cedrina-farm',
+    src: 'assets/images/cedrina-desktop.png',
+    alt: 'Cedrina Farm storefront on desktop with small-batch preserves jars and a seasonal hero',
+    title: 'Cedrina Farm — Home',
+    subtitle: 'Artisan preserves',
+    href: 'https://abdnois.github.io/cedrina-farm/'
   },
   {
     id: 'redbull-benefits',
@@ -24,11 +24,11 @@ export const projects = [
     href: 'https://abdnois.github.io/Redbull/'
   },
   {
-    id: 'cedrina-farm',
-    src: 'assets/images/cedrina-desktop.png',
-    alt: 'Cedrina Farm storefront on desktop with small-batch preserves jars and a seasonal hero',
-    title: 'Cedrina Farm — Home',
-    subtitle: 'Artisan preserves',
-    href: 'https://abdnois.github.io/cedrina-farm/'
+    id: 'verde-home',
+    src: 'assets/images/verde-home.png',
+    alt: 'VERDÉ skincare store home page with the brand hero and featured products',
+    title: 'VERDÉ — Home',
+    subtitle: 'Skincare storefront',
+    href: 'https://abdnois.github.io/verde-skincare-store/'
   }
 ];

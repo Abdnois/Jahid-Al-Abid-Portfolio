@@ -18,22 +18,22 @@
     var DESCRIPTION = 'An interactive skincare e-commerce experience designed to make discovering products and building personalised skincare routines simple. Features product browsing, wishlist management, shopping bag, checkout flow, and a personalised skin quiz.';
     var TECH = 'React 19, TypeScript, Tailwind CSS 4, React Router, Motion, Hono / Cloudflare Workers';
 
-    // Container classes of the three VERDÉ cards. The other project
-    // containers keep their own destinations.
+    // Right column (Col 6), top to bottom. The other project containers
+    // keep their own destinations.
     var VERDE_CARDS = [
         {
-            container: 'framer-1yvh36x-container',
+            container: 'framer-jj94u9-container',
             image: 'assets/images/verde-home.png',
             position: '10% 50%',
             label: 'VERDÉ home — thoughtful care, lasting glow'
         },
         {
-            container: 'framer-1on7nzq-container',
+            container: 'framer-1wwyak-container',
             image: 'assets/images/verde-shop.png',
             label: 'VERDÉ shop — all products'
         },
         {
-            container: 'framer-jj94u9-container',
+            container: 'framer-1q40z7n-container',
             image: 'assets/images/verde-quiz.png',
             position: '75% 50%',
             label: 'VERDÉ skin quiz'

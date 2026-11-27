@@ -1,11 +1,11 @@
 /* ------------------------------------------------------------------ *
- * Projects: Cedrina Farm occupies three existing Framer card containers.
+ * Projects: Cedrina Farm occupies the three cards in the left column.
  *
  * Retargeting the original containers (the same mechanism used for VERDÉ)
  * keeps the Framer-generated sizing, spacing, clipping, card overlay and
  * hover behaviour intact. No card is cloned and no layout override is used.
- * The three chosen containers leave exactly three VERDÉ, three Red Bull and
- * three Cedrina cards in the desktop grid.
+ * The middle column keeps the personal portrait and two Red Bull cards, and
+ * the right column is handled by projects-diversify.js (three VERDÉ cards).
  * ------------------------------------------------------------------ */
 (function () {
     'use strict';
@@ -18,20 +18,22 @@
     var TECH = 'TypeScript, React, Vite, Cloudflare Workers';
     var TITLE = NAME + ' — ' + CATEGORY + ' — ' + DESCRIPTION + ' — ' + TECH;
 
+    // Left column (Col 1), top to bottom. The portrait container in the
+    // middle column is deliberately untouched.
     var CEDRINA_CARDS = [
         {
-            container: 'framer-17ecfsj-container',
+            container: 'framer-1yvh36x-container',
+            image: 'assets/images/cedrina-desktop.png',
+            label: 'Cedrina Farm home — small-batch preserves on desktop'
+        },
+        {
+            container: 'framer-1qptjc8-container',
             image: 'assets/images/cedrina-story.png',
             position: '50% 35%',
             label: 'Cedrina Farm story — the hillside kitchen and jar collection'
         },
         {
-            container: 'framer-1q40z7n-container',
-            image: 'assets/images/cedrina-desktop.png',
-            label: 'Cedrina Farm home — small-batch preserves on desktop'
-        },
-        {
-            container: 'framer-1wwyak-container',
+            container: 'framer-1on7nzq-container',
             image: 'assets/images/cedrina-mobile.png',
             label: 'Cedrina Farm on mobile — pistachio pesto product story'
         }

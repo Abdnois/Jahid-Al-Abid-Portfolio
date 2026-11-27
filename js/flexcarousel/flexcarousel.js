@@ -34376,12 +34376,12 @@ void main() {
   );
 }, bE = [
   {
-    id: "verde-home",
-    src: "assets/images/verde-home.png",
-    alt: "VERDÉ skincare store home page with the brand hero and featured products",
-    title: "VERDÉ — Home",
-    subtitle: "Skincare storefront",
-    href: "https://abdnois.github.io/verde-skincare-store/"
+    id: "cedrina-farm",
+    src: "assets/images/cedrina-desktop.png",
+    alt: "Cedrina Farm storefront on desktop with small-batch preserves jars and a seasonal hero",
+    title: "Cedrina Farm — Home",
+    subtitle: "Artisan preserves",
+    href: "https://abdnois.github.io/cedrina-farm/"
   },
   {
     id: "redbull-benefits",
@@ -34392,12 +34392,12 @@ void main() {
     href: "https://abdnois.github.io/Redbull/"
   },
   {
-    id: "cedrina-farm",
-    src: "assets/images/cedrina-desktop.png",
-    alt: "Cedrina Farm storefront on desktop with small-batch preserves jars and a seasonal hero",
-    title: "Cedrina Farm — Home",
-    subtitle: "Artisan preserves",
-    href: "https://abdnois.github.io/cedrina-farm/"
+    id: "verde-home",
+    src: "assets/images/verde-home.png",
+    alt: "VERDÉ skincare store home page with the brand hero and featured products",
+    title: "VERDÉ — Home",
+    subtitle: "Skincare storefront",
+    href: "https://abdnois.github.io/verde-skincare-store/"
   }
 ], T_ = 0.42, UR = 12, wR = 4, h_ = 62 * Math.PI / 180, HR = 0.22, BR = 0.44, YR = 0.46, qR = 0.28, jR = 0.34, LR = (h, s) => {
   const g = Math.max(h, 1), p = T_ * s, E = Math.min(p * 0.66, s * HR), A = s * BR, O = Math.cos(h_), R = Math.sin(h_), z = Math.sqrt(Math.max(A * A - (E * O) ** 2, 1)) / R;
