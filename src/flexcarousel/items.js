@@ -1,14 +1,10 @@
 /**
- * The eight portfolio projects shown by the FlexCarousel.
+ * The three portfolio projects shown by the FlexCarousel on mobile/tablet:
+ * one entry per project, in the same order as the desktop Projects grid.
  *
  * Paths are document-relative, matching the rest of the static Framer export,
  * and point at the existing local image assets. No remote/placeholder images.
- *
- * Order mirrors the desktop Projects grid (VERDÉ and Red Bull interleaved)
- * so the mobile carousel presents the projects in the same sequence.
- *
- * Captions follow one pattern: `Title — Section` with a short descriptor
- * underneath, kept to what is actually visible in each screenshot.
+ * Captions follow one pattern: `Title — Section` with a short descriptor.
  */
 export const projects = [
   {
@@ -28,67 +24,11 @@ export const projects = [
     href: 'https://abdnois.github.io/Redbull/'
   },
   {
-    id: 'verde-shop',
-    src: 'assets/images/verde-shop.png',
-    alt: 'VERDÉ shop page showing the full skincare product catalogue',
-    title: 'VERDÉ — Shop',
-    subtitle: 'All products',
-    href: 'https://abdnois.github.io/verde-skincare-store/'
-  },
-  {
-    id: 'redbull-ingredients',
-    src: 'assets/images/EqvJzjCLjdGJP2598oVBokifa8.png',
-    alt: 'Red Bull ingredients section with a chilled can beside the headline The formula behind the energy',
-    title: 'Red Bull — Ingredients',
-    subtitle: 'The formula behind the energy',
-    href: 'https://abdnois.github.io/Redbull/'
-  },
-  {
-    id: 'redbull-range',
-    src: 'assets/images/BVX8eytEKGnIbv1CO2TMDcu3zW0.png',
-    alt: 'Red Bull range section with a large ENERGY headline above the Energy Drink, Sugarfree and Zero cans',
-    title: 'Red Bull — Range',
-    subtitle: 'Energy · Sugarfree · Zero',
-    href: 'https://abdnois.github.io/Redbull/'
-  },
-  {
-    id: 'verde-quiz',
-    src: 'assets/images/verde-quiz.png',
-    alt: 'VERDÉ skin quiz page with a guided skincare routine finder',
-    title: 'VERDÉ — Skin Quiz',
-    subtitle: 'Routine finder',
-    href: 'https://abdnois.github.io/verde-skincare-store/'
-  },
-  {
-    id: 'redbull-water',
-    src: 'assets/images/mYSu04fdPUHQ3zPS1rcsEsnSA.png',
-    alt: 'Red Bull ingredients page showing a Water ingredient card layered over the can',
-    title: 'Red Bull — Ingredient Detail',
-    subtitle: 'Water, the main ingredient',
-    href: 'https://abdnois.github.io/Redbull/'
-  },
-  {
-    id: 'verde-product',
-    src: 'assets/images/verde-product.png',
-    alt: 'VERDÉ product detail page for a skincare product',
-    title: 'VERDÉ — Product',
-    subtitle: 'Product detail',
-    href: 'https://abdnois.github.io/verde-skincare-store/'
-  },
-  {
-    id: 'cedrina-desktop',
+    id: 'cedrina-farm',
     src: 'assets/images/cedrina-desktop.png',
     alt: 'Cedrina Farm storefront on desktop with small-batch preserves jars and a seasonal hero',
-    title: 'Cedrina Farm — Desktop',
-    subtitle: 'Artisan preserves storefront',
-    href: 'https://abdnois.github.io/cedrina-farm/'
-  },
-  {
-    id: 'cedrina-mobile',
-    src: 'assets/images/cedrina-mobile.png',
-    alt: 'Cedrina Farm storefront on mobile with the pistachio pesto jar and product discovery button',
-    title: 'Cedrina Farm — Mobile',
-    subtitle: 'Responsive product story',
+    title: 'Cedrina Farm — Home',
+    subtitle: 'Artisan preserves',
     href: 'https://abdnois.github.io/cedrina-farm/'
   }
 ];

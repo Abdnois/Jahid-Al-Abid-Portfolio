@@ -1,11 +1,12 @@
 /* ------------------------------------------------------------------ *
- * Projects: four Red Bull cards + four VERDÉ cards.
+ * Projects: three VERDÉ cards in the desktop grid.
  *
- * The Framer runtime renders eight image-only case-study cards. This
- * module retargets four of them (all four are visible on desktop AND
- * mobile) to VERDÉ, swapping in real screenshots captured from the live
- * VERDÉ website. Card markup, sizes, hover effects, grayscale treatment
- * and animations are untouched. Re-applied if Framer re-renders.
+ * The Framer runtime renders the image-only case-study cards. This module
+ * retargets three of them to VERDÉ, swapping in real screenshots captured
+ * from the live VERDÉ website. Card markup, sizes, hover effects,
+ * grayscale treatment and animations are untouched. The remaining project
+ * containers are handled by their own project scripts. Re-applied if
+ * Framer re-renders.
  * ------------------------------------------------------------------ */
 (function () {
     'use strict';
@@ -17,8 +18,8 @@
     var DESCRIPTION = 'An interactive skincare e-commerce experience designed to make discovering products and building personalised skincare routines simple. Features product browsing, wishlist management, shopping bag, checkout flow, and a personalised skin quiz.';
     var TECH = 'React 19, TypeScript, Tailwind CSS 4, React Router, Motion, Hono / Cloudflare Workers';
 
-    // Container classes of four cards that exist at every breakpoint.
-    // The two large "hero" cards and the other four stay Red Bull.
+    // Container classes of the three VERDÉ cards. The other project
+    // containers keep their own destinations.
     var VERDE_CARDS = [
         {
             container: 'framer-1yvh36x-container',
@@ -36,11 +37,6 @@
             image: 'assets/images/verde-quiz.png',
             position: '75% 50%',
             label: 'VERDÉ skin quiz'
-        },
-        {
-            container: 'framer-1q40z7n-container',
-            image: 'assets/images/verde-product.png',
-            label: 'VERDÉ product detail'
         }
     ];
 

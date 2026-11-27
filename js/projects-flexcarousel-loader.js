@@ -2,14 +2,15 @@
  * FlexCarousel loader.
  *
  * The site is a static Framer export. This small dependency-free script
- * mounts the React Bits FlexCarousel only at <=1024px. The React + OGL
- * bundle is imported on demand, so desktop never downloads or runs it.
- * Resizing across the breakpoint mounts or fully tears the component down.
+ * mounts the React Bits FlexCarousel only at <=1199.98px, matching Framer's
+ * own 1200px desktop breakpoint. The React + OGL bundle is imported on demand,
+ * so desktop never downloads or runs it. Resizing across the breakpoint mounts
+ * or fully tears the component down.
  * ------------------------------------------------------------------ */
 (function () {
     'use strict';
 
-    var QUERY = '(max-width: 1024px)';
+    var QUERY = '(max-width: 1199.98px)';
     var SECTION = 'section[data-framer-name="Projects"]';
     var mql = window.matchMedia(QUERY);
 

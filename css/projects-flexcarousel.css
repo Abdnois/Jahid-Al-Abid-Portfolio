@@ -2,8 +2,8 @@
  * React Bits FlexCarousel — Projects section, mobile and tablet only.
  *
  * The carousel is mounted by js/projects-flexcarousel-loader.js inside the
- * existing Framer Projects wrapper, and only while the viewport is <=1024px.
- * Nothing here applies above that breakpoint, so the desktop grid, spacing
+ * existing Framer Projects wrapper, and only while the viewport is <=1199.98px.
+ * Nothing here applies at 1200px and above, so the desktop grid, spacing
  * and animations stay exactly as Framer exported them.
  * ------------------------------------------------------------------ */
 
@@ -11,7 +11,7 @@
     display: none;
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 1199.98px) {
     /* Hide only the original card grid while the carousel is mounted.
        The section's "View My Project" / "Contact Me" buttons stay put. */
     #projects.ja-flexcarousel-mode [data-framer-name="Mask"] {
@@ -120,14 +120,14 @@
 
 /* Tablets get a wider, shorter box: 88vw would be far too tall here, and the
    extra width lets two cards plus a peek of their neighbours stay visible. */
-@media (min-width: 600px) and (max-width: 1024px) {
+@media (min-width: 600px) and (max-width: 1199.98px) {
     #projects .ja-flexcarousel {
         height: clamp(430px, 44vw, 540px);
         min-height: 430px;
     }
 }
 
-@media (max-width: 1024px) and (prefers-reduced-motion: reduce) {
+@media (max-width: 1199.98px) and (prefers-reduced-motion: reduce) {
     #projects .ja-flexcarousel__fallback {
         scroll-behavior: auto;
     }
