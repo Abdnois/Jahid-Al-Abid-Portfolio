@@ -34438,6 +34438,22 @@ void main() {
     title: "VERDÉ — Product",
     subtitle: "Product detail",
     href: "https://abdnois.github.io/verde-skincare-store/"
+  },
+  {
+    id: "cedrina-desktop",
+    src: "assets/images/cedrina-desktop.png",
+    alt: "Cedrina Farm storefront on desktop with small-batch preserves jars and a seasonal hero",
+    title: "Cedrina Farm — Desktop",
+    subtitle: "Artisan preserves storefront",
+    href: "https://abdnois.github.io/cedrina-farm/"
+  },
+  {
+    id: "cedrina-mobile",
+    src: "assets/images/cedrina-mobile.png",
+    alt: "Cedrina Farm storefront on mobile with the pistachio pesto jar and product discovery button",
+    title: "Cedrina Farm — Mobile",
+    subtitle: "Responsive product story",
+    href: "https://abdnois.github.io/cedrina-farm/"
   }
 ], T_ = 0.42, UR = 12, wR = 4, h_ = 62 * Math.PI / 180, HR = 0.22, BR = 0.44, YR = 0.46, qR = 0.28, jR = 0.34, LR = (h, s) => {
   const g = Math.max(h, 1), p = T_ * s, E = Math.min(p * 0.66, s * HR), A = s * BR, O = Math.cos(h_), R = Math.sin(h_), M = Math.sqrt(Math.max(A * A - (E * O) ** 2, 1)) / R;

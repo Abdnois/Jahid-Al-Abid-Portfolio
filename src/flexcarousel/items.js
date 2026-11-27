@@ -74,5 +74,21 @@ export const projects = [
     title: 'VERDÉ — Product',
     subtitle: 'Product detail',
     href: 'https://abdnois.github.io/verde-skincare-store/'
+  },
+  {
+    id: 'cedrina-desktop',
+    src: 'assets/images/cedrina-desktop.png',
+    alt: 'Cedrina Farm storefront on desktop with small-batch preserves jars and a seasonal hero',
+    title: 'Cedrina Farm — Desktop',
+    subtitle: 'Artisan preserves storefront',
+    href: 'https://abdnois.github.io/cedrina-farm/'
+  },
+  {
+    id: 'cedrina-mobile',
+    src: 'assets/images/cedrina-mobile.png',
+    alt: 'Cedrina Farm storefront on mobile with the pistachio pesto jar and product discovery button',
+    title: 'Cedrina Farm — Mobile',
+    subtitle: 'Responsive product story',
+    href: 'https://abdnois.github.io/cedrina-farm/'
   }
 ];

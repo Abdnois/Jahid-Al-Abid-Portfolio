@@ -64,8 +64,10 @@
             var text = label(a);
 
             // Individual project cards: real external case study, new tab.
-            // VERDÉ cards have their own destination and must never be rewritten.
-            if (a.getAttribute('data-project') === 'verde') return;
+            // VERDÉ and Cedrina cards have their own destinations and must
+            // never be rewritten.
+            var project = a.getAttribute('data-project');
+            if (project === 'verde' || project === 'cedrina') return;
             if (CASE_STUDY_VIEW.test(text)) {
                 if (a.getAttribute('href') !== CASE_STUDY_URL) {
                     a.setAttribute('href', CASE_STUDY_URL);
